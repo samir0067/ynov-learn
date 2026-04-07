@@ -16,7 +16,7 @@ export default function DetailScreen({navigation}: Props) {
               onPress={() => navigation.goBack()} 
               color={COLORS.secondary} 
             />
-        </View>  
+        </View>
     )
 }
 
