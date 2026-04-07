@@ -1,5 +1,6 @@
 // src/screens/ProfileScreen.tsx
-// EXERCICE : Créer des fiches de profil style Instagram
+// 🎯 EXERCICE : Créer des fiches de profil style Instagram
+// Remplissez les 6 TODO un par un. Testez après chaque TODO !
 
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
@@ -39,35 +40,39 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
   return (
     <View style={styles.card}>
 
-      {/* TODO 1 : Afficher l'image de couverture (profile.cover)
-          Indice : utilise le composant Image avec source={{ uri: ... }}
-          Style à utiliser : styles.cover */}
+      {/* TODO 1 : Afficher l'image de couverture
+          → Composant : Image
+          → source : {{ uri: profile.cover }}
+          → style : styles.cover */}
 
 
       {/* TODO 2 : Afficher l'avatar rond par-dessus la cover
-          Indice : une View avec styles.avatarContainer
-          + une Image avec source={{ uri: profile.avatar }}
-          Style de l'image : styles.avatar */}
+          → D'abord une View avec style={styles.avatarContainer}
+          → Dedans une Image :
+             - source={{ uri: profile.avatar }}
+             - style={styles.avatar} */}
 
 
       {/* TODO 3 : Afficher le nom, le titre et la bio
-          Indice : une View avec styles.info qui contient 3 Text
-          - profile.name  → styles.name
-          - profile.title → styles.titleText
-          - profile.bio   → styles.bio */}
+          → Une View avec style={styles.info}
+          → Dedans 3 composants Text :
+             - profile.name  avec style={styles.name}
+             - profile.title avec style={styles.titleText}
+             - profile.bio   avec style={styles.bio} */}
 
 
       {/* TODO 4 : Afficher les 3 statistiques EN LIGNE
-          Indice : une View avec styles.statsRow (flexDirection: "row")
-          Dedans, 3 View (styles.stat) contenant chacun :
-          - un Text avec le nombre (styles.statNumber)
-          - un Text avec le label (styles.statLabel)
-          Les valeurs : profile.stats.posts, .followers, .following */}
+          → Une View avec style={styles.statsRow}
+          → Dedans 3 blocs identiques (View style={styles.stat}) :
+             - Text style={styles.statNumber} → le chiffre
+             - Text style={styles.statLabel}  → le mot
+          → Valeurs : profile.stats.posts, .followers, .following
+          → Labels : "Posts", "Followers", "Following" */}
 
 
       {/* TODO 5 : Ajouter le bouton "Suivre"
-          Indice : réutilise le composant Button qu'on a créé au créneau 1
-          Entoure-le d'une View avec styles.buttonContainer */}
+          → Une View avec style={styles.buttonContainer}
+          → Dedans : <Button label="Suivre" onPress={() => {}} /> */}
 
     </View>
   );
@@ -75,11 +80,12 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
 
 export default function ProfileScreen() {
   return (
-    // TODO 6 : Remplace cette View par un ScrollView pour pouvoir scroller
+    // TODO 6 : Remplacez <View> par <ScrollView> pour pouvoir scroller !
     <View style={styles.screen}>
       {PROFILES.map((profile) => (
         <ProfileCard key={profile.id} profile={profile} />
       ))}
+      <View style={{ height: 40 }} />
     </View>
   );
 }
