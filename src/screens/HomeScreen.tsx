@@ -10,11 +10,9 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Accueil 🏠</Text>
-            <Text style={styles.subtitle}>Application de Samuel</Text>
-            <Button
-                label="Aller à Détail"
-                onPress={() => navigation.navigate("Detail")}
-            />
+            <Text style={styles.subtitle}>Application de Loïc</Text>
+            <Button label="Aller à Détail" onPress={() => navigation.navigate("Detail")} />
+            <Button label="Aller à Démo" onPress={() => navigation.navigate("Demo")} />
         </View>
     );
 }
