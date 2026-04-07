@@ -10,6 +10,7 @@ export default function DetailScreen({ navigation }: DetailScreenProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>
+            <Text>Application de Samuel</Text>
             <Button
                 label="← Retour"
                 onPress={() => navigation.goBack()}

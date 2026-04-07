@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
@@ -11,7 +11,7 @@ type DemoScreenProps = {
 
 export default function DemoScreen({ navigation }: DemoScreenProps) {
     return (
-        <ScrollView>
+        <ScrollView style={styles.container}>
             <Text style={styles.title}>Ceci est une demo</Text>
 
             {/* Image depuis internet */}
@@ -52,7 +52,6 @@ export default function DemoScreen({ navigation }: DemoScreenProps) {
                 <Image source={imageTheRock} style={styles.imageCarree} />
             </View>
 
-
             {/* Liste */}
 
             <Text style={styles.subtitle}>Mettre en ligne avec Flexbox</Text>
@@ -86,21 +85,22 @@ export default function DemoScreen({ navigation }: DemoScreenProps) {
     );
 }
 
-const styles = {
-    screen: {
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         backgroundColor: COLORS.background,
+        padding: 16,
     },
     title: {
         fontSize: 24,
         fontWeight: "bold",
         color: COLORS.primary,
-        margin: 18,
     },
     subtitle: {
         fontSize: 20,
         color: COLORS.gray,
-        margin: 18,
+        marginTop: 10,
+        marginBottom: 10,
     },
     flexContainer: {
         display: "flex",
@@ -134,5 +134,5 @@ const styles = {
     imageLarge: {
         width: "100%",
         height: 200,
-    }
-};
+    },
+});
