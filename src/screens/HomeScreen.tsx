@@ -1,16 +1,47 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import { COLORS } from "../constants/colors";
 
-export default function HomeScreen() {
+type Props = {
+  navigation: any 
+}
+
+export default function HomeScreen({navigation}: Props) {
     return (
-        <View>
-            <Text>Accueil 🏠</Text>
-            <Button label="Confirmer" onPress={() => undefined} />
-            <Button label="Annuler" color={COLORS.white} onPress={() => undefined} />
-            <Button label="Envoyer" color={COLORS.secondary} onPress={() => undefined} />
-            <Button label="Retour" color="#cebc1d" onPress={() => undefined} />
-            <Button label="Suivant" color="#70cbe6" onPress={() => undefined} />
+        <View style={styles.container}>
+            <Text style={styles.title}>Bienvenue 🏠</Text>
+            <Text style={styles.subtitle}>Ceci est l'écran d'accueil</Text>
+            <Button label="Aller au détail" onPress={() => navigation.navigate("Detail")} />
+            <Button 
+                label="Voir la page démo" 
+                color={COLORS.secondary}
+                onPress={() => navigation.navigate("Demo")} 
+            />
+            <Button
+                label="📱 Exercice : Profils" 
+                onPress={() => navigation.navigate("Profile")} 
+                color={COLORS.gray}
+            />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex : 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: COLORS.background,
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: "bold",
+        color: COLORS.black,
+        marginBottom: 8,
+    },
+    subtitle: {
+        fontSize: 16,
+        color: COLORS.gray,
+        marginBottom: 32,
+    }
+})
