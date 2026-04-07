@@ -17,6 +17,11 @@ export default function HomeScreen({navigation}: Props) {
                 color={COLORS.secondary}
                 onPress={() => navigation.navigate("Demo")} 
             />
+            <Button
+                label="📱 Exercice : Profils" 
+                onPress={() => navigation.navigate("Profile")} 
+                color={COLORS.gray}
+            />
         </View>
     )
 }
