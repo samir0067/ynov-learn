@@ -10,8 +10,8 @@ type ButtonProps = {
 export default function Button({ label, onPress, color = COLORS.primary}: ButtonProps) {
     return (
         <TouchableOpacity  style={[styles.button, {backgroundColor : color}]} onPress={onPress}>
-            <Text style={styles.text}>{label}</Text> 
-        </TouchableOpacity>        
+            <Text style={styles.text}>{label}</Text>
+        </TouchableOpacity>
     )
 }
 

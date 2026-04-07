@@ -11,7 +11,7 @@ export default function DetailScreen({onBack}: DetailScreenProps) {
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>
             <Button label="← Retour" onPress={onBack} color={COLORS.secondary} />
-        </View>  
+        </View>
     )
 }
 
