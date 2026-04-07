@@ -15,6 +15,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
                 label="Aller à Détail"
                 onPress={() => navigation.navigate("Detail")}
             />
+            <Button
+                label="Voir la page Demo"
+                onPress={() => navigation.navigate("Demo")}
+            />
         </View>
     );
 }
