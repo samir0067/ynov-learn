@@ -2,20 +2,19 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 import { COLORS } from "../constants/colors";
 
-type Props = {
-  navigation: any 
+type DetailScreenProps = {
+    navigation: any;
 }
 
-export default function DetailScreen({navigation}: Props) {
+export default function DetailScreen({navigation}: DetailScreenProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>
-            <Text style={styles.subtitle}>Vous êtes sur l'écran de détail</Text>
             <Button 
               label="← Retour" 
               onPress={() => navigation.goBack()} 
               color={COLORS.secondary} 
-            />
+              />
         </View>  
     )
 }
@@ -31,12 +30,12 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: COLORS.black,
-    marginBottom: 8,
+    marginBottom: 20,
   },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: COLORS.gray,
-    marginBottom: 32,
-  }
+  subtitle: {        
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: COLORS.gray,
+        marginBottom: 32,
+    },
 });
