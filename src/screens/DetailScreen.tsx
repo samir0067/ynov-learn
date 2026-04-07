@@ -3,14 +3,18 @@ import Button from "../components/Button";
 import { COLORS } from "../constants/colors";
 
 type DetailScreenProps = {
-    onBack: () => void
+    navigation: any;
 }
 
-export default function DetailScreen({onBack}: DetailScreenProps) {
+export default function DetailScreen({navigation}: DetailScreenProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>
-            <Button label="← Retour" onPress={onBack} color={COLORS.secondary} />
+            <Button 
+              label="← Retour" 
+              onPress={() => navigation.goBack()} 
+              color={COLORS.secondary} 
+              />
         </View>  
     )
 }
@@ -28,4 +32,10 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     marginBottom: 20,
   },
+  subtitle: {        
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: COLORS.gray,
+        marginBottom: 32,
+    },
 });
