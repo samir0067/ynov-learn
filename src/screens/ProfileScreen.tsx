@@ -40,6 +40,11 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
   return (
     <View style={styles.card}>
 
+      {/* Ce texte disparaîtra quand vous remplirez les TODO */}
+      <Text style={styles.placeholder}>
+        ✏️ Carte de {profile.name} — Remplissez les TODO !
+      </Text>
+
       {/* TODO 1 : Afficher l'image de couverture
           → Composant : Image
           → source : {{ uri: profile.cover }}
@@ -121,6 +126,13 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     borderWidth: 4,
     borderColor: COLORS.white,
+  },
+    placeholder: {
+    padding: 24,
+    textAlign: "center",
+    fontSize: 16,
+    color: COLORS.gray,
+    fontStyle: "italic",
   },
   info: {
     alignItems: "center",
