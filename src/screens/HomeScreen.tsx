@@ -13,18 +13,20 @@ export default function HomeScreen({navigation}: Props) {
             <Text style={styles.subtitle}>Voyez l'éxplosion</Text>
             <Button label="BOOM" onPress={() => navigation.goBack()} color={COLORS.secondary} />
             <Button label="BOOOOM" onPress={() => navigation.goBack()} color={COLORS.secondary} />
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex : 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: COLORS.background,
     },
-    title:{
+
+    title: {
         fontSize: 28,
         fontWeight: "bold",
         color: COLORS.black,

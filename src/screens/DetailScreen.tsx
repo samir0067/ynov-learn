@@ -4,17 +4,19 @@ import { COLORS } from "../constants/colors";
 
 type Props = {
   navigation: any
+
 }
 
 export default function DetailScreen({navigation}: Props) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>
-            <Text style={styles.subtitle}>Ceci est l'écran de détail</Text>
-            <Button
-              label="← Retour"
-              onPress={() => navigation.goBack()}
-              color={COLORS.secondary} />
+            <Text style={styles.subtitle}>Vous êtes sur l'écran de détail</Text>
+            <Button 
+              label="← Retour" 
+              onPress={() => navigation.goBack()} 
+              color={COLORS.secondary} 
+            />
         </View>
     )
 }
@@ -33,9 +35,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
-    color: COLORS.black,
-    marginBottom: 20,
-  },
+    color: COLORS.gray,
+    marginBottom: 32,
+  }
 });
