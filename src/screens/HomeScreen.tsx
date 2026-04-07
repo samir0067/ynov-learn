@@ -12,6 +12,11 @@ export default function HomeScreen({navigation}: Props) {
             <Text style={styles.title}>Bienvenue 🏠</Text>
             <Text style={styles.subtitle}>Ceci est l'écran d'accueil</Text>
             <Button label="Aller au détail" onPress={() => navigation.navigate("Detail")} />
+            <Button 
+                label="Voir la page démo" 
+                color={COLORS.secondary}
+                onPress={() => navigation.navigate("Demo")} 
+            />
         </View>
     )
 }
