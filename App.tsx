@@ -4,7 +4,7 @@ import DetailScreen from './src/screens/DetailScreen';
 <<<<<<< HEAD
 =======
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailScreen from './src/screens/DetailScreen';
+import DemoScreens from './src/screens/DemoScreens';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,3 +26,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
