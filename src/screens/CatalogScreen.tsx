@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   card: {
-    width: CARD_WIDTH,
     backgroundColor: COLORS.white,
     borderRadius: 16,
     overflow: "hidden",
@@ -154,7 +153,6 @@ const styles = StyleSheet.create({
   },
   productImage: {
     width: "100%",
-    height: CARD_WIDTH,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
   },
