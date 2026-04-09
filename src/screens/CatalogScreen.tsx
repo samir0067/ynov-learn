@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 
 const PRODUCTS = [
