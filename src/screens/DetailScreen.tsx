@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     color: COLORS.black,
-    marginBottom: 8,
+    marginBottom: 20,
   },
   compareText: {
     fontSize: 13,
