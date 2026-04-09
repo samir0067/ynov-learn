@@ -81,6 +81,7 @@ export default function DemoScreen({ navigation }: DemoScreenProps) {
                 onPress={() => navigation.goBack()}
                 color={COLORS.secondary}
             />
+            <View style={{ height: 40 }} />
         </ScrollView>
     );
 }
