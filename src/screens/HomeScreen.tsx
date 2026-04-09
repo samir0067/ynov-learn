@@ -12,27 +12,12 @@ export default function HomeScreen({navigation}: Props) {
             <Text style={styles.title}>Bienvenue 🏠</Text>
             <Text style={styles.subtitle}>Ceci est l'écran d'accueil</Text>
             <Button label="Aller au détail" onPress={() => navigation.navigate("Detail")} />
-            <Button 
-                label="Voir la page démo" 
-                color={COLORS.secondary}
-                onPress={() => navigation.navigate("Demo")} 
-            />
-            <Button
-                label="📱 Exercice : Profils" 
-                onPress={() => navigation.navigate("Profile")} 
-                color={COLORS.gray}
-            />
-                  <Text style={styles.sectionTitle}>📗 les listes</Text>
-      <Button
-        label="Démo FlatList"
-        onPress={() => navigation.navigate("FlatListDemo")}
-        color="#2ECC71"
-      />
-      <Button
-        label="Démo Grid"
-        onPress={() => navigation.navigate("GridDemo")}
-        color="#9B59B6"
-      />
+            <Button label="Voir la page démo" color={COLORS.secondary} onPress={() => navigation.navigate("Demo")} />
+            <Button label="📱 Exercice : Profils" onPress={() => navigation.navigate("Profile")} color={COLORS.gray}/>
+            <Text style={styles.sectionTitle}>📗 les listes</Text>
+            <Button label="Démo FlatList" onPress={() => navigation.navigate("FlatListDemo")} color="#2ECC71"/>
+            <Button label="Démo Grid" onPress={() => navigation.navigate("GridDemo")} color="#9B59B6" />
+            <Button label="🛒 Exercice : Catalogue" onPress={() => navigation.navigate("Catalog")} color="#E74C3C"/>
         </View>
     )
 }
