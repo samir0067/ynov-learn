@@ -22,11 +22,16 @@ export default function HomeScreen({navigation}: Props) {
                 onPress={() => navigation.navigate("Profile")} 
                 color={COLORS.gray}
             />
-                  <Text style={styles.sectionTitle}>📗 Créneau 3</Text>
+                  <Text style={styles.sectionTitle}>📗 les listes</Text>
       <Button
         label="Démo FlatList"
         onPress={() => navigation.navigate("FlatListDemo")}
         color="#2ECC71"
+      />
+      <Button
+        label="Démo Grid"
+        onPress={() => navigation.navigate("GridDemo")}
+        color="#9B59B6"
       />
         </View>
     )

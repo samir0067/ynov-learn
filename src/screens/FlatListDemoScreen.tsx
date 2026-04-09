@@ -1,4 +1,4 @@
-import { View, Text, Image, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 
 // Nos données : une liste de fruits avec emoji et couleur
