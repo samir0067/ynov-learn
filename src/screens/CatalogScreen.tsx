@@ -1,9 +1,6 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { COLORS } from "../constants/colors";
 
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const CARD_WIDTH = (SCREEN_WIDTH - 16 * 2 - 12) / 2;
-
 const PRODUCTS = [
   {
     id: "1",
