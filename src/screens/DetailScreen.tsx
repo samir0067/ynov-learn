@@ -1,12 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import Button from "../components/Button";
 import { COLORS } from "../constants/colors";
 
-type DetailScreenProps = {
-    navigation: any;
-};
-
-export default function DetailScreen({ navigation }: DetailScreenProps) {
+export default function DetailScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Détail 📄</Text>

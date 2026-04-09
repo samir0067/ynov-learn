@@ -1,4 +1,4 @@
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, FlatList } from "react-native";
 import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
@@ -8,34 +8,67 @@ type HomeScreenProps = {
     navigation: any;
 };
 
+const NAVIGATION_ITEMS = [
+    {
+        id: "1",
+        label: "Voir la demo Images",
+        screen: "Demo",
+    },
+    {
+        id: "2",
+        label: "Voir la demo Profil",
+        screen: "Profile",
+    },
+    {
+        id: "3",
+        label: "Voir la demo Flatlist",
+        screen: "FlatListDemo",
+    },
+    {
+        id: "4",
+        label: "Voir la demo Grid",
+        screen: "GridDemo",
+    },
+    {
+        id: "5",
+        label: "Voir la demo Catalogue",
+        screen: "Catalog",
+    },
+    {
+        id: "6",
+        label: "En savoir plus",
+        screen: "Detail",
+    },
+];
+
+function NavigationItem({
+    label,
+    onPress,
+}: {
+    label: string;
+    onPress: () => void;
+}) {
+    return <Button label={label} onPress={onPress} />;
+}
+
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <View style={styles.container}>
             <Image source={banner} style={styles.cover} />
             <View style={styles.info}>
                 <Text style={styles.title}>Bienvenue ! 🏠</Text>
-                <Text style={styles.subtitle}>
-                    Ceci est l'écran d'accueil
-                </Text>
+                <Text style={styles.subtitle}>Ceci est l'écran d'accueil</Text>
             </View>
-            <View style={styles.buttons}>
-                <Button
-                    label="Voir la demo Images"
-                    onPress={() => navigation.navigate("Demo")}
-                />
-                <Button
-                    label="Voir la demo Profil"
-                    onPress={() => navigation.navigate("Profile")}
-                />
-                <Button
-                    label="Voir la demo Flatlist"
-                    onPress={() => navigation.navigate("FlatListDemo")}
-                />
-                <Button
-                    label="En savoir plus"
-                    onPress={() => navigation.navigate("Detail")}
-                />
-            </View>
+            <FlatList
+                style={styles.navigation}
+                data={NAVIGATION_ITEMS}
+                renderItem={({ item }) => (
+                    <NavigationItem
+                        label={item.label}
+                        onPress={() => navigation.navigate(item.screen)}
+                    />
+                )}
+            />
         </View>
     );
 }
@@ -68,7 +101,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         marginBottom: 32,
     },
-    buttons: {
+    navigation: {
         width: "80%",
     },
 });

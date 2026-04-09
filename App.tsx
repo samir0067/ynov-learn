@@ -7,6 +7,8 @@ import DetailScreen from "./src/screens/DetailScreen";
 import DemoScreen from "./src/screens/DemoScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import FlatListDemoScreen from "./src/screens/FlatListDemoScreen";
+import GridDemoScreen from "./src/screens/GridDemoScreen";
+import CatalogScreen from "./src/screens/CatalogScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +40,16 @@ export default function App() {
                     name="FlatListDemo"
                     component={FlatListDemoScreen}
                     options={{ title: "Demo Flatlist" }}
+                />
+                <Stack.Screen
+                    name="GridDemo"
+                    component={GridDemoScreen}
+                    options={{ title: "Demo Grid" }}
+                />
+                <Stack.Screen
+                    name="Catalog"
+                    component={CatalogScreen}
+                    options={{ title: "Demo Catalogue" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

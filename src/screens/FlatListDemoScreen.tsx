@@ -1,10 +1,5 @@
 import { Text, View, StyleSheet, FlatList } from "react-native";
-import Button from "../components/Button";
 import { COLORS } from "../constants/colors";
-
-type FlatListDemoScreenProps = {
-    navigation: any;
-};
 
 type FruitType = {
     id: string;
@@ -40,9 +35,7 @@ function FruitItem({ fruit }: { fruit: FruitType }) {
     );
 }
 
-export default function FlatListDemoScreen({
-    navigation,
-}: FlatListDemoScreenProps) {
+export default function FlatListDemoScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>🍎 Liste de fruits (FlatList)</Text>

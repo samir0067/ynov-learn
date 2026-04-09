@@ -1,15 +1,10 @@
 import { Image, ScrollView, Text, View, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
-import Button from "../components/Button";
 
 const imagePenguin = require("../../assets/images/fat-penguin.png");
 const imageTheRock = require("../../assets/images/theRock.png");
 
-type DemoScreenProps = {
-    navigation: any;
-};
-
-export default function DemoScreen({ navigation }: DemoScreenProps) {
+export default function DemoScreen() {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Ceci est une demo</Text>
@@ -128,5 +123,6 @@ const styles = StyleSheet.create({
     imageLarge: {
         width: "100%",
         height: 200,
+        borderRadius: 10,
     },
 });

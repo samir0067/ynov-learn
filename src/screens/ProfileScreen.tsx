@@ -2,10 +2,6 @@ import { ScrollView, Text, View, Image, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
-type ProfileScreenProps = {
-    navigation: any;
-};
-
 const PROFILES = [
     {
         id: 1,
@@ -73,7 +69,7 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
     );
 }
 
-export default function ProfileScreen({ navigation }: ProfileScreenProps) {
+export default function ProfileScreen() {
     return (
         <ScrollView style={styles.container}>
             {PROFILES.map((profile) => (
