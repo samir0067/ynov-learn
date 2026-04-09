@@ -6,6 +6,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import DetailScreen from "./src/screens/DetailScreen";
 import DemoScreen from "./src/screens/DemoScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
+import FlatListDemoScreen from "./src/screens/FlatListDemoScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,16 +34,12 @@ export default function App() {
                     component={ProfileScreen}
                     options={{ title: "Profil" }}
                 />
+                <Stack.Screen
+                    name="FlatListDemo"
+                    component={FlatListDemoScreen}
+                    options={{ title: "Demo Flatlist" }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffa600",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});

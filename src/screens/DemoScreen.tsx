@@ -74,13 +74,6 @@ export default function DemoScreen({ navigation }: DemoScreenProps) {
             <View style={styles.flexCentering}>
                 <Text>Je suis centré</Text>
             </View>
-
-            <View />
-            <Button
-                label="← Retour"
-                onPress={() => navigation.goBack()}
-                color={COLORS.secondary}
-            />
             <View style={{ height: 40 }} />
         </ScrollView>
     );

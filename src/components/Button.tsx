@@ -18,10 +18,11 @@ export default function Button({ label, onPress, color = COLORS.primary}: Button
 const styles = StyleSheet.create({
     button: {
         padding: 12,
-        borderRadius: 8,
-        borderWidth: 0.5,
+        borderRadius: 12,
+        borderWidth: 0,
         alignItems: "center",
         marginVertical: 8,
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
     },
     text: {
         color: COLORS.black,

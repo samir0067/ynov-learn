@@ -79,11 +79,6 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
             {PROFILES.map((profile) => (
                 <ProfileCard key={profile.id} profile={profile} />
             ))}
-            <Button
-                label="← Retour"
-                onPress={() => navigation.goBack()}
-                color={COLORS.secondary}
-            />
             <View style={{ height: 40 }} />
         </ScrollView>
     );

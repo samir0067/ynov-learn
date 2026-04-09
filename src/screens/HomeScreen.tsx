@@ -1,6 +1,8 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
+
+const banner = require("../../assets/images/strasbourg.jpg");
 
 type HomeScreenProps = {
     navigation: any;
@@ -9,20 +11,31 @@ type HomeScreenProps = {
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Bienvenue 🏠</Text>
-            <Text style={styles.subtitle}>Ceci est l'écran d'accueil</Text>
-            <Button
-                label="Aller à Détail"
-                onPress={() => navigation.navigate("Detail")}
-            />
-            <Button
-                label="Voir la page Demo"
-                onPress={() => navigation.navigate("Demo")}
-            />
-            <Button
-                label="Voir le profil"
-                onPress={() => navigation.navigate("Profile")}
-            />
+            <Image source={banner} style={styles.cover} />
+            <View style={styles.info}>
+                <Text style={styles.title}>Bienvenue ! 🏠</Text>
+                <Text style={styles.subtitle}>
+                    Ceci est l'écran d'accueil
+                </Text>
+            </View>
+            <View style={styles.buttons}>
+                <Button
+                    label="Voir la demo Images"
+                    onPress={() => navigation.navigate("Demo")}
+                />
+                <Button
+                    label="Voir la demo Profil"
+                    onPress={() => navigation.navigate("Profile")}
+                />
+                <Button
+                    label="Voir la demo Flatlist"
+                    onPress={() => navigation.navigate("FlatListDemo")}
+                />
+                <Button
+                    label="En savoir plus"
+                    onPress={() => navigation.navigate("Detail")}
+                />
+            </View>
         </View>
     );
 }
@@ -30,10 +43,8 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: COLORS.background,
-        padding: 16,
     },
     title: {
         fontSize: 28,
@@ -43,7 +54,21 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: 16,
+        textAlign: "center",
         color: COLORS.gray,
         marginBottom: 32,
+    },
+    cover: {
+        width: "100%",
+        height: 200,
+        marginBottom: 20,
+    },
+    info: {
+        alignItems: "center",
+        paddingHorizontal: 32,
+        marginBottom: 32,
+    },
+    buttons: {
+        width: "80%",
     },
 });
