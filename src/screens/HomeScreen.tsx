@@ -22,6 +22,12 @@ export default function HomeScreen({navigation}: Props) {
                 onPress={() => navigation.navigate("Profile")} 
                 color={COLORS.gray}
             />
+                  <Text style={styles.sectionTitle}>📗 Créneau 3</Text>
+      <Button
+        label="Démo FlatList"
+        onPress={() => navigation.navigate("FlatListDemo")}
+        color="#2ECC71"
+      />
         </View>
     )
 }
@@ -43,5 +49,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: COLORS.gray,
         marginBottom: 32,
-    }
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: "bold",
+        color: COLORS.black,
+        alignSelf: "flex-start",
+        marginTop: 20,
+    marginBottom: 8,
+  },
 })

@@ -40,44 +40,41 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
   return (
     <View style={styles.card}>
 
-      {/* Ce texte disparaîtra quand vous remplirez les TODO */}
-      <Text style={styles.placeholder}>
-        ✏️ Carte de {profile.name} — Remplissez les TODO !
-      </Text>
+      {/* TODO 1 : Afficher l'image de couverture */}
+      <Image source={{ uri: profile.cover }} style={styles.cover} />
 
-      {/* TODO 1 : Afficher l'image de couverture
-          → Composant : Image
-          → source : {{ uri: profile.cover }}
-          → style : styles.cover */}
+      {/* TODO 2 : Afficher l'avatar rond par-dessus la cover */}
+      <View style={styles.avatarContainer}>
+        <Image source={{ uri: profile.avatar }} style={styles.avatar} />
+      </View>
 
+      {/* TODO 3 : Afficher le nom, le titre et la bio */}
+      <View style={styles.info}>
+        <Text style={styles.name}>{profile.name}</Text>
+        <Text style={styles.titleText}>{profile.title}</Text>
+        <Text style={styles.bio}>{profile.bio}</Text>
+      </View>
 
-      {/* TODO 2 : Afficher l'avatar rond par-dessus la cover
-          → D'abord une View avec style={styles.avatarContainer}
-          → Dedans une Image :
-             - source={{ uri: profile.avatar }}
-             - style={styles.avatar} */}
+      {/* TODO 4 : Afficher les 3 statistiques EN LIGNE */}
+      <View style={styles.statsRow}>
+        <View style={styles.stat}>
+          <Text style={styles.statNumber}>{profile.stats.posts}</Text>
+          <Text style={styles.statLabel}>Posts</Text>
+        </View>
+        <View style={styles.stat}>
+          <Text style={styles.statNumber}>{profile.stats.followers}</Text>
+          <Text style={styles.statLabel}>Followers</Text>
+        </View>
+        <View style={styles.stat}>
+          <Text style={styles.statNumber}>{profile.stats.following}</Text>
+          <Text style={styles.statLabel}>Following</Text>
+        </View>
+      </View>
 
-
-      {/* TODO 3 : Afficher le nom, le titre et la bio
-          → Une View avec style={styles.info}
-          → Dedans 3 composants Text :
-             - profile.name  avec style={styles.name}
-             - profile.title avec style={styles.titleText}
-             - profile.bio   avec style={styles.bio} */}
-
-
-      {/* TODO 4 : Afficher les 3 statistiques EN LIGNE
-          → Une View avec style={styles.statsRow}
-          → Dedans 3 blocs identiques (View style={styles.stat}) :
-             - Text style={styles.statNumber} → le chiffre
-             - Text style={styles.statLabel}  → le mot
-          → Valeurs : profile.stats.posts, .followers, .following
-          → Labels : "Posts", "Followers", "Following" */}
-
-
-      {/* TODO 5 : Ajouter le bouton "Suivre"
-          → Une View avec style={styles.buttonContainer}
-          → Dedans : <Button label="Suivre" onPress={() => {}} /> */}
+      {/* TODO 5 : Ajouter le bouton "Suivre" */}
+      <View style={styles.buttonContainer}>
+        <Button label="Suivre" onPress={() => {}} />
+      </View>
 
     </View>
   );
@@ -85,13 +82,12 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
 
 export default function ProfileScreen() {
   return (
-    // TODO 6 : Remplacez <View> par <ScrollView> pour pouvoir scroller !
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       {PROFILES.map((profile) => (
         <ProfileCard key={profile.id} profile={profile} />
       ))}
       <View style={{ height: 40 }} />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -126,13 +122,6 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     borderWidth: 4,
     borderColor: COLORS.white,
-  },
-    placeholder: {
-    padding: 24,
-    textAlign: "center",
-    fontSize: 16,
-    color: COLORS.gray,
-    fontStyle: "italic",
   },
   info: {
     alignItems: "center",
