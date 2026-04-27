@@ -14,7 +14,6 @@ import { COLORS } from '../constants/colors';
 // HOMESCREEN — VERSION CORRIGÉE "EFFET WOW" ✨
 // ============================================================
 //
-// Cet écran sert de modèle après l'exercice du créneau 3.
 // Il respecte tous les critères demandés :
 //   1. Composants réutilisables avec props typées (CourseCard, StatCard)
 //   2. ScrollView + grille (flexWrap) pour les cours
@@ -24,7 +23,6 @@ import { COLORS } from '../constants/colors';
 //   6. Plusieurs Images (avatar + bandeau hero distant)
 //
 // 💡 Astuce pédago : on garde des types simples (any sur navigation)
-// pour rester accessible aux débutants.
 // ============================================================
 
 // On récupère la largeur d'écran pour calculer la taille des cartes
@@ -56,6 +54,7 @@ const COURSES: Course[] = [
   { id: '4', title: 'Grille', emoji: '🔲', color: '#2ECC71', screen: 'GridDemo' },
   { id: '5', title: 'Catalogue', emoji: '🛍️', color: '#3498DB', screen: 'Catalog' },
   { id: '6', title: 'Détail', emoji: '📄', color: '#9B59B6', screen: 'Detail' },
+  { id: '7', title: 'State vs Props', emoji: '⚡', color: '#1ABC9C', screen: 'StateVsProps' },
 ];
 
 // Stats "vitrine" affichées en haut de page (rendu rapide d'un dashboard)
