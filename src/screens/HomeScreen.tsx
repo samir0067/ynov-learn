@@ -55,6 +55,8 @@ const COURSES: Course[] = [
   { id: '5', title: 'Catalogue', emoji: '🛍️', color: '#3498DB', screen: 'Catalog' },
   { id: '6', title: 'Détail', emoji: '📄', color: '#9B59B6', screen: 'Detail' },
   { id: '7', title: 'State vs Props', emoji: '⚡', color: '#1ABC9C', screen: 'StateVsProps' },
+  { id: '8', title: 'Counter', emoji: '🔢', color: '#E67E22', screen: 'Counter' },
+  { id: '9', title: 'Chrono', emoji: '⏱️', color: '#34495E', screen: 'Chrono' }
 ];
 
 // Stats "vitrine" affichées en haut de page (rendu rapide d'un dashboard)

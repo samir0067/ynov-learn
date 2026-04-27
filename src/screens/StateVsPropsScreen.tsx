@@ -53,7 +53,7 @@ function Greeting({ name, color }: GreetingProps) {
 export default function StateVsPropsScreen() {
   // On garde en mémoire le nombre de likes 
   // (vous verrez ce mécanisme en phase 2).
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState<number>(0);
 
   return (
     <ScrollView
