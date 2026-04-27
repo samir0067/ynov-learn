@@ -1,15 +1,16 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, StyleProp, ViewStyle } from "react-native";
 import { COLORS } from "../constants/colors";
 
 type ButtonProps = {
     label: string;
     onPress: () => void;
     color?: string;
+    style?: StyleProp<ViewStyle>;
 }
 
-export default function Button({ label, onPress, color = COLORS.primary}: ButtonProps) {
+export default function Button({ label, onPress, color = COLORS.primary, style }: ButtonProps) {
     return (
-        <TouchableOpacity  style={[styles.button, {backgroundColor : color}]} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: color }, style]} onPress={onPress}>
             <Text style={styles.text}>{label}</Text> 
         </TouchableOpacity>        
     )
