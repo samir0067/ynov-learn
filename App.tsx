@@ -2,11 +2,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailScreen from "./src/screens/DetailScreen";
-import DemoScreen from "./src/screens/DemoScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import FlatListDemoScreen from "./src/screens/FlatListDemoScreen";
 import GridDemoScreen from "./src/screens/GridDemoScreen";
 import CatalogScreen from "./src/screens/CatalogScreen";
+import CompteurScreen from "./src/screens/CompteurScreen";
+import ImagesScreen from "./src/screens/ImagesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,29 +26,34 @@ export default function App() {
                     options={{ title: "Détail" }}
                 />
                 <Stack.Screen
-                    name="Demo"
-                    component={DemoScreen}
-                    options={{ title: "Demo" }}
+                    name="Images"
+                    component={ImagesScreen}
+                    options={{ title: "Démo Images" }}
                 />
                 <Stack.Screen
                     name="Profile"
                     component={ProfileScreen}
-                    options={{ title: "Profil" }}
+                    options={{ title: "Démo Profil" }}
                 />
                 <Stack.Screen
                     name="FlatListDemo"
                     component={FlatListDemoScreen}
-                    options={{ title: "Demo Flatlist" }}
+                    options={{ title: "Démo Flatlist" }}
                 />
                 <Stack.Screen
                     name="GridDemo"
                     component={GridDemoScreen}
-                    options={{ title: "Demo Grid" }}
+                    options={{ title: "Démo Grid" }}
                 />
                 <Stack.Screen
                     name="Catalog"
                     component={CatalogScreen}
-                    options={{ title: "Demo Catalogue" }}
+                    options={{ title: "Démo Catalogue" }}
+                />
+                <Stack.Screen
+                    name="Compteur"
+                    component={CompteurScreen}
+                    options={{ title: "Démo Compteur" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
