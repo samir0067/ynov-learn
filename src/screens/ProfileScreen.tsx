@@ -40,18 +40,33 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
   return (
     <View style={styles.card}>
 
+<<<<<<< HEAD
       <Image source={{ uri: profile.cover }} style={styles.cover} />
 
+=======
+      {/* TODO 1 : Afficher l'image de couverture */}
+      <Image source={{ uri: profile.cover }} style={styles.cover} />
+
+      {/* TODO 2 : Afficher l'avatar rond par-dessus la cover */}
+>>>>>>> feat/samir
       <View style={styles.avatarContainer}>
         <Image source={{ uri: profile.avatar }} style={styles.avatar} />
       </View>
 
+<<<<<<< HEAD
+=======
+      {/* TODO 3 : Afficher le nom, le titre et la bio */}
+>>>>>>> feat/samir
       <View style={styles.info}>
         <Text style={styles.name}>{profile.name}</Text>
         <Text style={styles.titleText}>{profile.title}</Text>
         <Text style={styles.bio}>{profile.bio}</Text>
       </View>
 
+<<<<<<< HEAD
+=======
+      {/* TODO 4 : Afficher les 3 statistiques EN LIGNE */}
+>>>>>>> feat/samir
       <View style={styles.statsRow}>
         <View style={styles.stat}>
           <Text style={styles.statNumber}>{profile.stats.posts}</Text>
@@ -66,6 +81,14 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
           <Text style={styles.statLabel}>Following</Text>
         </View>
       </View>
+<<<<<<< HEAD
+=======
+
+      {/* TODO 5 : Ajouter le bouton "Suivre" */}
+      <View style={styles.buttonContainer}>
+        <Button label="Suivre" onPress={() => {}} />
+      </View>
+>>>>>>> feat/samir
 
       <View style={styles.buttonContainer}>
         <Button label="Suivre" onPress={() => {}} />
@@ -76,6 +99,7 @@ function ProfileCard({ profile }: { profile: (typeof PROFILES)[0] }) {
 
 export default function ProfileScreen() {
   return (
+<<<<<<< HEAD
     <ScrollView 
       style={styles.screen} 
       contentContainerStyle={{ paddingBottom: 40 }}
@@ -83,6 +107,13 @@ export default function ProfileScreen() {
       {PROFILES.map((profile) => (
         <ProfileCard key={profile.id} profile={profile} />
       ))}
+=======
+    <ScrollView style={styles.screen}>
+      {PROFILES.map((profile) => (
+        <ProfileCard key={profile.id} profile={profile} />
+      ))}
+      <View style={{ height: 40 }} />
+>>>>>>> feat/samir
     </ScrollView>
   );
 }
@@ -118,13 +149,6 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     borderWidth: 4,
     borderColor: COLORS.white,
-  },
-    placeholder: {
-    padding: 24,
-    textAlign: "center",
-    fontSize: 16,
-    color: COLORS.gray,
-    fontStyle: "italic",
   },
   info: {
     alignItems: "center",
