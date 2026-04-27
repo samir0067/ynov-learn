@@ -1,7 +1,5 @@
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import { View, Text, FlatList, StyleSheet} from "react-native";
 import { COLORS } from "../constants/colors";
-import Button from "../components/Button";
-
 import ProductCard from "../components/ProductCard";
 import { PRODUCTS } from "../data/products";
 
