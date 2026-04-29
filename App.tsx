@@ -10,6 +10,7 @@ import CatalogScreen from './src/screens/CatalogScreen';
 import StateVsPropsScreen from './src/screens/StateVsPropsScreen';
 import CounterScreen from './src/screens/CounterScreen';
 import ChronoScreen from './src/screens/ChronoScreen';
+import FormScreen from './src/screens/FormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="StateVsProps" component={StateVsPropsScreen} options={{ title: "State vs Props" }} />
         <Stack.Screen name="Counter" component={CounterScreen} options={{ title: "Counter" }} />
         <Stack.Screen name="Chrono" component={ChronoScreen} options={{ title: "Chrono" }} />
+        <Stack.Screen name="Form" component={FormScreen} options={{ title: "Formulaire" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
