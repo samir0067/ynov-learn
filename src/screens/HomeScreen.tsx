@@ -10,23 +10,6 @@ import {
 } from 'react-native';
 import { COLORS } from '../constants/colors';
 
-// ============================================================
-// HOMESCREEN — VERSION CORRIGÉE "EFFET WOW" ✨
-// ============================================================
-//
-// Il respecte tous les critères demandés :
-//   1. Composants réutilisables avec props typées (CourseCard, StatCard)
-//   2. ScrollView + grille (flexWrap) pour les cours
-//   3. Éléments cliquables qui naviguent vers les écrans
-//   4. Flexbox partout pour organiser le layout
-//   5. Style soigné (ombres, borderRadius, espacements cohérents)
-//   6. Plusieurs Images (avatar + bandeau hero distant)
-//
-// 💡 Astuce pédago : on garde des types simples (any sur navigation)
-// ============================================================
-
-// On récupère la largeur d'écran pour calculer la taille des cartes
-// (même technique que dans GridDemoScreen, pour rester cohérent)
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const CARD_WIDTH = (SCREEN_WIDTH - 16 * 2 - 12) / 2;
 
@@ -34,17 +17,12 @@ type Props = {
   navigation: any;
 };
 
-// ------------------------------------------------------------
-// Données affichées dans la page
-// ------------------------------------------------------------
-
-// Un "cours" = une carte qui ouvre un écran existant du projet
 type Course = {
   id: string;
   title: string;
   emoji: string;
   color: string;
-  screen: string; // nom de l'écran dans le Stack Navigator
+  screen: string; 
 };
 
 const COURSES: Course[] = [
@@ -55,9 +33,10 @@ const COURSES: Course[] = [
   { id: '5', title: 'Catalogue', emoji: '🛍️', color: '#3498DB', screen: 'Catalog' },
   { id: '6', title: 'Détail', emoji: '📄', color: '#9B59B6', screen: 'Detail' },
   { id: '7', title: 'State vs Props', emoji: '⚡', color: '#1ABC9C', screen: 'StateVsProps' },
+  // ✅ TA NOUVELLE TUILE ICI
+  { id: '10', title: 'Formulaire', emoji: '✍️', color: '#8E44AD', screen: 'Form' },
 ];
 
-// Stats "vitrine" affichées en haut de page (rendu rapide d'un dashboard)
 type Stat = {
   id: string;
   value: string;
@@ -72,11 +51,6 @@ const STATS: Stat[] = [
   { id: '3', value: '100%', label: 'Fun', color: '#FF8C00', emoji: '🚀' },
 ];
 
-// ------------------------------------------------------------
-// Composants réutilisables (props typées)
-// ------------------------------------------------------------
-
-// Carte d'un cours : grande tuile colorée cliquable
 type CourseCardProps = {
   course: Course;
   onPress: () => void;
@@ -98,7 +72,6 @@ function CourseCard({ course, onPress }: CourseCardProps) {
   );
 }
 
-// Petite carte stat horizontale (chiffres en haut de page)
 type StatCardProps = {
   stat: Stat;
 };
@@ -115,10 +88,6 @@ function StatCard({ stat }: StatCardProps) {
   );
 }
 
-// ------------------------------------------------------------
-// Écran principal
-// ------------------------------------------------------------
-
 const HomeScreen = ({ navigation }: Props) => {
   return (
     <ScrollView
@@ -126,7 +95,6 @@ const HomeScreen = ({ navigation }: Props) => {
       contentContainerStyle={styles.scrollContent}
       showsVerticalScrollIndicator={false}
     >
-      {/* Header : salutation à gauche, avatar à droite */}
       <View style={styles.header}>
         <View>
           <Text style={styles.hello}>Bonjour 👋</Text>
@@ -138,7 +106,6 @@ const HomeScreen = ({ navigation }: Props) => {
         />
       </View>
 
-      {/* Bandeau "hero" : grande image cliquable qui ouvre le Catalogue */}
       <TouchableOpacity
         activeOpacity={0.9}
         style={styles.hero}
@@ -148,7 +115,6 @@ const HomeScreen = ({ navigation }: Props) => {
           source={{ uri: 'https://picsum.photos/seed/ynovwow/800/400' }}
           style={styles.heroImage}
         />
-        {/* On superpose un voile sombre + le texte en bas de l'image */}
         <View style={styles.heroOverlay}>
           <Text style={styles.heroBadge}>NOUVEAU</Text>
           <Text style={styles.heroTitle}>Découvre le catalogue 🛍️</Text>
@@ -158,7 +124,6 @@ const HomeScreen = ({ navigation }: Props) => {
         </View>
       </TouchableOpacity>
 
-      {/* Stats : ScrollView horizontale (effet "swipe" sympa) */}
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -169,7 +134,6 @@ const HomeScreen = ({ navigation }: Props) => {
         ))}
       </ScrollView>
 
-      {/* Section "Mes cours" : grille 2 colonnes via flexWrap */}
       <Text style={styles.sectionTitle}>📚 Mes cours</Text>
       <View style={styles.grid}>
         {COURSES.map((course) => (
@@ -181,15 +145,10 @@ const HomeScreen = ({ navigation }: Props) => {
         ))}
       </View>
 
-      {/* Petit footer pour finir proprement */}
       <Text style={styles.footer}>Fait avec ❤️ en Bachelor 2</Text>
     </ScrollView>
   );
 };
-
-// ------------------------------------------------------------
-// Styles
-// ------------------------------------------------------------
 
 const styles = StyleSheet.create({
   screen: {
@@ -199,8 +158,6 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 32,
   },
-
-  // ---- Header ----
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -226,14 +183,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLORS.primary,
   },
-
-  // ---- Bandeau hero ----
   hero: {
     marginHorizontal: 16,
     marginTop: 8,
     borderRadius: 24,
     overflow: 'hidden',
-    // Ombre marquée pour faire "ressortir" la carte
     shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.18,
@@ -276,8 +230,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     opacity: 0.9,
   },
-
-  // ---- Stats horizontales ----
   statsRow: {
     paddingHorizontal: 16,
     paddingVertical: 16,
@@ -292,7 +244,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderLeftWidth: 4,
     minWidth: 150,
-    // Ombre douce pour un effet "carte qui flotte"
     shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
@@ -312,8 +263,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.gray,
   },
-
-  // ---- Grille de cours ----
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -335,7 +284,6 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 12,
     justifyContent: 'space-between',
-    // Ombre marquée pour le côté "tuile premium"
     shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.18,
@@ -356,8 +304,6 @@ const styles = StyleSheet.create({
     opacity: 0.85,
     marginTop: 2,
   },
-
-  // ---- Footer ----
   footer: {
     textAlign: 'center',
     color: COLORS.gray,
