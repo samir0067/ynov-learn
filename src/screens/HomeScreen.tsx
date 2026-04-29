@@ -3,6 +3,7 @@ import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
 const banner = require("../../assets/images/strasbourg.jpg");
+const avatar = require("../../assets/images/squirrelpfp.jpg");
 
 type HomeScreenProps = {
     navigation: any;
@@ -39,7 +40,24 @@ const DEMO_ITEMS = [
         screen: "Catalog",
         color: "lime",
     },
-    { id: "6", label: "Compteur", screen: "Compteur", color: "yellow" },
+    {
+        id: "6",
+        label: "Compteur",
+        screen: "Compteur",
+        color: "yellow",
+    },
+    {
+        id: "7",
+        label: "Chrono",
+        screen: "Chrono",
+        color: "teal",
+    },
+    {
+        id: "8",
+        label: "Formulaire",
+        screen: "Form",
+        color: "#8E44AD",
+    }
 ];
 
 function NavigationItem({
@@ -57,29 +75,28 @@ function NavigationItem({
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <ScrollView style={styles.container}>
-            <Image source={banner} style={styles.cover} />
             {/* Header : salutation à gauche, avatar à droite - issu de la branche Samir */}
             <View style={styles.header}>
-                <View></View>
-                <Image
-                    source={{
-                        uri: "https://themimolet.github.io/assets/images/mimo-pfp.png",
-                    }}
-                    style={styles.avatar}
-                />
-            </View>
-            <View style={styles.center}>
-                <View style={styles.intro}>
+                <View>
                     <Text style={styles.title}>Bonjour :D</Text>
                     <Text style={styles.subtitle}>
                         Bienvenue sur Ynov Learn !
                     </Text>
-                    <Text>
+                </View>
+                <Image
+                    source={avatar}
+                    style={styles.avatar}
+                />
+            </View>
+            <Image source={banner} style={styles.cover} />
+
+            {/* <View style={styles.center}>
+                <Text style={styles.intro}></Text>
+                                    <Text style={styles.subtitle}>
                         Ici vous allez pouvoir voir une sélection de démos qui
                         montrent ce qu'on est capables de faire !
                     </Text>
-                </View>
-            </View>
+            </View> */}
             <View style={{ paddingHorizontal: 20, marginBottom: 12 }}>
                 <Text style={styles.title}>Démos</Text>
                 <View style={styles.demoNav}>
@@ -115,8 +132,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         padding: 20,
-        paddingTop: 6,
         width: "100%",
+        backgroundColor: COLORS.white,
     },
     title: {
         fontSize: 28,
@@ -138,16 +155,7 @@ const styles = StyleSheet.create({
     intro: {
         fontSize: 16,
         color: COLORS.black,
-        alignContent: "center",
         textAlign: "center",
-        backgroundColor: COLORS.white,
-        borderRadius: 20,
-        padding: 20,
-        marginBottom: 24,
-        gap: 12,
-        boxShadow: `0px 4px 12px ${COLORS.gray}33`,
-        elevation: 6,
-        overflow: "hidden",
     },
     cover: {
         width: "100%",

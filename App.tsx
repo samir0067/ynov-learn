@@ -8,6 +8,8 @@ import GridDemoScreen from "./src/screens/GridDemoScreen";
 import CatalogScreen from "./src/screens/CatalogScreen";
 import CompteurScreen from "./src/screens/CompteurScreen";
 import ImagesScreen from "./src/screens/ImagesScreen";
+import ChronoScreen from "./src/screens/ChronoScreen";
+import FormScreen from "./src/screens/FormScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +20,10 @@ export default function App() {
                 <Stack.Screen
                     name="Home"
                     component={HomeScreen}
-                    options={{ title: "Accueil" }}
+                    options={{
+                        title: "Accueil",
+                        headerShown: false,
+                    }}
                 />
                 <Stack.Screen
                     name="Detail"
@@ -54,6 +59,16 @@ export default function App() {
                     name="Compteur"
                     component={CompteurScreen}
                     options={{ title: "Démo Compteur" }}
+                />
+                <Stack.Screen
+                    name="Chrono"
+                    component={ChronoScreen}
+                    options={{ title: "Démo Chrono" }}
+                />
+                <Stack.Screen
+                    name="Form"
+                    component={FormScreen}
+                    options={{ title: "Formulaire ✍️" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
