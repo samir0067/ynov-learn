@@ -8,6 +8,7 @@ import FlatListDemoScreen from './src/screens/FlatListDemoScreen';
 import GridDemoScreen from './src/screens/GridDemoScreen';
 import CatalogScreen from './src/screens/CatalogScreen';
 import StateVsPropsScreen from './src/screens/StateVsPropsScreen';
+import FormScreen from './src/screens/FormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,9 +22,9 @@ export default function App() {
         <Stack.Screen name='Profile' component={ProfileScreen} options={{ title: "Profils" }} />
         <Stack.Screen name="FlatListDemo" component={FlatListDemoScreen} options={{ title: "Démo FlatList" }} />
         <Stack.Screen name="GridDemo" component={GridDemoScreen} options={{ title: "Démo Grid" }} />
-        <Stack.Screen name="Catalog" component={CatalogScreen} options={{ title: "Catalogue" }}
-/>
+        <Stack.Screen name="Catalog" component={CatalogScreen} options={{ title: "Catalogue" }} />
         <Stack.Screen name="StateVsProps" component={StateVsPropsScreen} options={{ title: "State vs Props" }} />
+        <Stack.Screen name="Form" component={FormScreen} options={{ title: "Formulaire ✍️" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
