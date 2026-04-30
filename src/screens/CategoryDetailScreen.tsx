@@ -1,4 +1,5 @@
 import { View, StyleSheet, Text } from "react-native";
+import { useEffect } from "react";
 import Button from "../components/Button";
 
 export default function CategoryDetailScreen({
@@ -9,7 +10,11 @@ export default function CategoryDetailScreen({
     navigation: any;
 }) {
     let params = route.params;
-    navigation.setOptions({ title: params.name + " " + params.emoji });
+
+    useEffect(() => {
+        navigation.setOptions({ title: params.name + " " + params.emoji });
+    }, [navigation, params.name, params.emoji]);
+
     return (
         <View style={[styles.container, { backgroundColor: params.color }]}>
             <View style={styles.contentBox}>
