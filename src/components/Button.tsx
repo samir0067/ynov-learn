@@ -5,11 +5,16 @@ type ButtonProps = {
     label: string;
     onPress: () => void;
     color?: string;
+    disabled?: boolean;
 }
 
-export default function Button({ label, onPress, color = COLORS.primary}: ButtonProps) {
+export default function Button({ label, onPress, color = COLORS.primary, disabled }: ButtonProps) {
     return (
-        <TouchableOpacity  style={[styles.button, {backgroundColor : color}]} onPress={onPress}>
+        <TouchableOpacity
+            style={[styles.button, { backgroundColor: color }, disabled && styles.disabled]}
+            onPress={onPress}
+            disabled={disabled}
+        >
             <Text style={styles.text}>{label}</Text>
         </TouchableOpacity>
     )
@@ -26,5 +31,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: COLORS.black,
+    },
+    disabled: {
+        backgroundColor: COLORS.softgray,
     }
 })

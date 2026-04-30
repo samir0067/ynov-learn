@@ -1,4 +1,11 @@
-import { View, Text, FlatList, StyleSheet, Dimensions } from "react-native";
+import {
+    View,
+    Text,
+    FlatList,
+    StyleSheet,
+    TouchableOpacity,
+    Dimensions,
+} from "react-native";
 import { COLORS } from "../constants/colors";
 
 // On récupère la largeur de l'écran pour calculer la taille des cartes
@@ -19,34 +26,50 @@ const CATEGORIES = [
     { id: "10", name: "Nature", emoji: "🌿", color: "#27AE60" },
 ];
 
-function CategoryCard({ category }: { category: (typeof CATEGORIES)[0] }) {
+function CategoryCard({
+    category,
+    navigation,
+}: {
+    category: (typeof CATEGORIES)[0];
+    navigation: any;
+}) {
     return (
-        <View style={[styles.card, { backgroundColor: category.color }]}>
+        <TouchableOpacity
+            style={[styles.card, { backgroundColor: category.color }]}
+            onPress={() =>
+                navigation.navigate({
+                    name: "CategoryDetail",
+                    screen: category.name + " " + category.emoji,
+                    params: {
+                        id: category.id,
+                        name: category.name,
+                        emoji: category.emoji,
+                        color: category.color,
+                    },
+                })
+            }
+        >
             <Text style={styles.emoji}>{category.emoji}</Text>
             <Text style={styles.cardName}>{category.name}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
-export default function GridDemoScreen() {
+export default function GridDemoScreen({ navigation }: { navigation: any }) {
     return (
         <View style={styles.screen}>
             <FlatList
                 data={CATEGORIES}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <CategoryCard category={item} />}
-                // numColumns = nombre de colonnes → ça crée la GRILLE
+                renderItem={({ item }) => (
+                    <CategoryCard category={item} navigation={navigation} />
+                )}
                 numColumns={2}
-                // columnWrapperStyle = style de chaque LIGNE de la grille
                 columnWrapperStyle={styles.row}
                 ListHeaderComponent={
                     <View>
                         <Text style={styles.header}>
                             🔲 Grille de catégories
-                        </Text>
-                        <Text style={styles.subheader}>
-                            Note : C'est tiré directement de la branche Samir
-                            pour rattraper mon retard sur cet écran spécifique
                         </Text>
                     </View>
                 }
@@ -67,10 +90,6 @@ const styles = StyleSheet.create({
         color: COLORS.black,
         padding: 16,
         paddingBottom: 8,
-    },
-    subheader: {
-        padding: 16,
-        fontSize: 14,
     },
     row: {
         justifyContent: "space-between",

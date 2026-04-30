@@ -10,6 +10,7 @@ import CompteurScreen from "./src/screens/CompteurScreen";
 import ImagesScreen from "./src/screens/ImagesScreen";
 import ChronoScreen from "./src/screens/ChronoScreen";
 import FormScreen from "./src/screens/FormScreen";
+import CategoryDetailScreen from "./src/screens/CategoryDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +70,10 @@ export default function App() {
                     name="Form"
                     component={FormScreen}
                     options={{ title: "Formulaire ✍️" }}
+                />
+                <Stack.Screen
+                    name="CategoryDetail"
+                    component={CategoryDetailScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>

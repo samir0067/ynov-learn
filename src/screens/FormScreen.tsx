@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
 // type FormProps = {
@@ -24,56 +25,69 @@ export default function FormScreen() {
 
     return (
         <View style={style.container}>
-            <Text style={style.title}>Comment tu t'appelles ?</Text>
-            <TextInput
-                value={name}
-                style={style.input}
-                onChangeText={(text) => {
-                    setName(text);
-                    setSeconds(0);
-                }}
-                maxLength={20}
-                placeholder="Entrez votre prénom ici..."
-            />
-            <Text
-                style={
-                    name.length === 20
-                        ? style.underInputMax20
-                        : name.length >= 15
-                            ? style.underInputOver15
-                            : style.underInput
-                }
-            >
-                {name.length}/20 caractères
-            </Text>
-            <Text style={style.text}>
-                "
-                {name
-                    ? `Bonjour ${name} ! 👋`
-                    : seconds >= 5
-                        ? `T'es encore là ? 😴`
-                        : "Bonjour, qui es-tu ? 🤔"}
-                "
-            </Text>
-            <View style={style.controles}>
-                <Button
-                    label="Effacer"
-                    color={name ? "tomato" : "lightgray"}
-                    onPress={() => {
-                        setName("");
-                        setResetCount((prev) => prev + 1);
+            <View style={style.inputContainer}>
+                <Text style={style.title}>Qui es-tu ?</Text>
+                <TextInput
+                    value={name}
+                    style={style.input}
+                    placeholderTextColor="gray"
+                    onChangeText={(text) => {
+                        setName(text);
+                        setSeconds(0);
                     }}
+                    maxLength={20}
+                    placeholder="Entrez votre prénom ici..."
                 />
+                <Text
+                    style={
+                        name.length === 20
+                            ? style.underInputMax20
+                            : name.length >= 15
+                              ? style.underInputOver15
+                              : style.underInput
+                    }
+                >
+                    {name.length}/20
+                </Text>
+                <View style={style.center}>
+                    <Text style={style.greeting}>
+                        "
+                        {name.toLowerCase() === "ta mère"
+                            ? "Salut maman ! 👋"
+                            : name.toLowerCase() === "ton père"
+                              ? "nooooooon 😱"
+                              : name
+                                ? `Bonjour ${name} ! 👋`
+                                : seconds >= 5
+                                  ? `T'es encore là ? 😴`
+                                  : "Bonjour, qui es-tu ? 🤔"}
+                        "
+                    </Text>
+                    <Button
+                        label="Effacer"
+                        color={name ? "tomato" : "lightgray"}
+                        disabled={!name}
+                        onPress={() => {
+                            setName("");
+                            setResetCount((prev) => prev + 1);
+                        }}
+                    />
+                </View>
             </View>
-            <Text>Nombre de resets : {resetCount}</Text>
+            <Text style={style.resetCount}>Resets : {resetCount}</Text>
         </View>
     );
 }
 
 const style = StyleSheet.create({
     container: {
-        flex: 1,
         padding: 16,
+    },
+    inputContainer: {
+        backgroundColor: COLORS.white,
+        borderRadius: 12,
+        padding: 16,
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
     },
     title: {
         fontSize: 24,
@@ -86,26 +100,37 @@ const style = StyleSheet.create({
         borderRadius: 60,
         padding: 14,
         marginBottom: 12,
-        backgroundColor: "white",
+        backgroundColor: "rgb(250, 250, 250)",
         fontStyle: "italic",
     },
-    text: {
+    greeting: {
         fontSize: 18,
+        marginBottom: 12,
+        textAlign: "center",
     },
     underInput: {
         fontSize: 14,
-        color: "darkgray",
+        color: COLORS.black,
         marginBottom: 12,
+        textAlign: "right",
     },
     underInputOver15: {
         color: "tomato",
+        textAlign: "right",
     },
     underInputMax20: {
         color: "red",
         fontWeight: "bold",
+        textAlign: "right",
     },
-    controles: {
-        flexDirection: "row",
+    center: {
+        flexDirection: "column",
         justifyContent: "center",
+    },
+    resetCount: {
+        marginTop: 100,
+        fontSize: 16,
+        color: COLORS.gray,
+        textAlign: "center",
     },
 });

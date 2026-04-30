@@ -10,54 +10,14 @@ type HomeScreenProps = {
 };
 
 const DEMO_ITEMS = [
-    {
-        id: "1",
-        label: "Images",
-        screen: "Images",
-        color: "skyblue",
-    },
-    {
-        id: "2",
-        label: "Profil",
-        screen: "Profile",
-        color: "magenta",
-    },
-    {
-        id: "3",
-        label: "Flatlist",
-        screen: "FlatListDemo",
-        color: "tomato",
-    },
-    {
-        id: "4",
-        label: "Grid",
-        screen: "GridDemo",
-        color: "orange",
-    },
-    {
-        id: "5",
-        label: "Catalogue",
-        screen: "Catalog",
-        color: "lime",
-    },
-    {
-        id: "6",
-        label: "Compteur",
-        screen: "Compteur",
-        color: "yellow",
-    },
-    {
-        id: "7",
-        label: "Chrono",
-        screen: "Chrono",
-        color: "teal",
-    },
-    {
-        id: "8",
-        label: "Formulaire",
-        screen: "Form",
-        color: "#8E44AD",
-    }
+    { id: "1", label: "Images", screen: "Images", color: "skyblue" },
+    { id: "2", label: "Profil", screen: "Profile", color: "magenta" },
+    { id: "3", label: "Flatlist", screen: "FlatListDemo", color: "tomato" },
+    { id: "4", label: "Grid", screen: "GridDemo", color: "orange" },
+    { id: "5", label: "Catalogue", screen: "Catalog", color: "lime" },
+    { id: "6", label: "Compteur", screen: "Compteur", color: "yellow" },
+    { id: "7", label: "Chrono", screen: "Chrono", color: "teal" },
+    { id: "8", label: "Formulaire", screen: "Form", color: "#8E44AD" },
 ];
 
 function NavigationItem({
@@ -83,20 +43,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
                         Bienvenue sur Ynov Learn !
                     </Text>
                 </View>
-                <Image
-                    source={avatar}
-                    style={styles.avatar}
-                />
+                <Image source={avatar} style={styles.avatar} />
             </View>
             <Image source={banner} style={styles.cover} />
 
-            {/* <View style={styles.center}>
-                <Text style={styles.intro}></Text>
-                                    <Text style={styles.subtitle}>
-                        Ici vous allez pouvoir voir une sélection de démos qui
-                        montrent ce qu'on est capables de faire !
-                    </Text>
-            </View> */}
             <View style={{ paddingHorizontal: 20, marginBottom: 12 }}>
                 <Text style={styles.title}>Démos</Text>
                 <View style={styles.demoNav}>
