@@ -16,7 +16,7 @@ import { COLORS } from "../constants/colors";
 // ------------------------------------------------------------
 
 const MAX_LENGTH = 20;
-const WARNING_THRESHOLD = 15;
+const WARNING_THRESHOLD = 18;
 const IDLE_DELAY_MS = 5000;
 
 type Props = {
@@ -36,7 +36,7 @@ export default function FormScreen({ navigation }: Props) {
     // ------------------------------------------------------------
     const trimmed = name.trim();
     const isEmpty = trimmed.length === 0;
-    const isClaude = trimmed.toLowerCase() === "claude";
+    const isSamir = trimmed.toLowerCase() === "samir";
     const counterColor = name.length > WARNING_THRESHOLD ? COLORS.warning : COLORS.gray;
 
     // ------------------------------------------------------------
@@ -44,9 +44,7 @@ export default function FormScreen({ navigation }: Props) {
     // ------------------------------------------------------------
     useEffect(() => {
         setIsIdle(false);
-
         if (isEmpty) return;
-
         const id = setTimeout(() => setIsIdle(true), IDLE_DELAY_MS);
         return () => clearTimeout(id);
     }, [name]);
@@ -98,8 +96,8 @@ export default function FormScreen({ navigation }: Props) {
                             <Text style={styles.greetingPlaceholder}>
                                 Le message de bienvenue apparaîtra ici
                             </Text>
-                        ) : isClaude ? (
-                            <Text style={styles.greetingClaude}>🤖 Bien tenté !</Text>
+                        ) : isSamir ? (
+                            <Text style={styles.greetingSamir}>👋 Yo Samir !</Text>
                         ) : (
                             <Text style={styles.greeting}>Bonjour {trimmed} 👋</Text>
                         )}
@@ -191,7 +189,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: COLORS.primary,
     },
-    greetingClaude: {
+    greetingSamir : {
         fontSize: 20,
         fontWeight: "bold",
         color: COLORS.secondary,
