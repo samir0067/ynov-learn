@@ -2,27 +2,25 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Button from "../components/Button";
 
-// Ici au cas-où
-
 // type FormProps = {
 //     value: string;
-//     onChangeText: (text: string) => void;
+//     onChangeText: (text: string) => {
+//         setSeconds(0);
+//     };
 // };
 
 export default function FormScreen() {
     const [name, setName] = useState("");
-
+    const [seconds, setSeconds] = useState(0);
     const [resetCount, setResetCount] = useState(0);
 
-    // À finir
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds((prev) => prev + 1);
+        }, 1000);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setSeconds((prev) => prev + 1);
-    //     }, 5000);
-
-    //     return () => clearInterval(interval);
-    // }, [name]);
+        return () => clearInterval(interval);
+    });
 
     return (
         <View style={style.container}>
@@ -30,7 +28,10 @@ export default function FormScreen() {
             <TextInput
                 value={name}
                 style={style.input}
-                onChangeText={setName}
+                onChangeText={(text) => {
+                    setName(text);
+                    setSeconds(0);
+                }}
                 maxLength={20}
                 placeholder="Entrez votre prénom ici..."
             />
@@ -39,14 +40,20 @@ export default function FormScreen() {
                     name.length === 20
                         ? style.underInputMax20
                         : name.length >= 15
-                          ? style.underInputOver15
-                          : style.underInput
+                            ? style.underInputOver15
+                            : style.underInput
                 }
             >
                 {name.length}/20 caractères
             </Text>
             <Text style={style.text}>
-                "{name ? `Bonjour ${name} ! 👋` : "Bonjour, qui es-tu ? 🤔"}"
+                "
+                {name
+                    ? `Bonjour ${name} ! 👋`
+                    : seconds >= 5
+                        ? `T'es encore là ? 😴`
+                        : "Bonjour, qui es-tu ? 🤔"}
+                "
             </Text>
             <View style={style.controles}>
                 <Button
