@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../constants/colors";
 
-export default function DetailScreen() {
+export default function AboutScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Détail 📄</Text>
+            <Text style={styles.title}>À propos 📄</Text>
             <Text>Application de Samuel</Text>
         </View>
     );
