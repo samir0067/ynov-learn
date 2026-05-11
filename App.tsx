@@ -82,7 +82,11 @@ function HomeStacks() {
 
 function NavTabs() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                animation: "shift",
+            }}
+        >
             <Tab.Screen
                 name="Home"
                 component={HomeStacks}

@@ -29,7 +29,6 @@ export default function ChronoScreen() {
             </View>
             <View style={style.controles}>
                 <Button
-                    style={style.runButton}
                     color={running ? "tomato" : "lime"}
                     label={running ? "Arrêter" : "Démarrer"}
                     onPress={() => setRunning(!running)}
@@ -65,12 +64,14 @@ const style = StyleSheet.create({
         textAlign: "center",
     },
     round: {
+        width: 200,
+        height: 200,
+        margin: 32,
         alignItems: "center",
         borderRadius: 100,
         backgroundColor: COLORS.white,
         padding: 30,
         boxShadow: `0px 4px 12px ${COLORS.black}33`,
-        border: `4px solid ${COLORS.primary}`,
         justifyContent: "center",
     },
     seconds: {
@@ -87,10 +88,5 @@ const style = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         gap: 12,
-    },
-    runButton: {
-        alignItems: "center",
-        paddingHorizontal: 32,
-        marginBottom: 32,
     },
 });
