@@ -4,8 +4,9 @@ import { COLORS } from "../constants/colors";
 export default function AboutScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>À propos 📄</Text>
             <Text>Application de Samuel</Text>
+            <Text>Développé pour le cours de DEV MOBILE</Text>
+            <Text>(C) 2026 Samuel</Text>
         </View>
     );
 }

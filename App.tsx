@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FeedScreen from "./src/screens/FeedScreen";
 import AboutScreen from "./src/screens/AboutScreen";
 import ArticleScreen from "./src/screens/ArticleScreen";
@@ -40,6 +41,13 @@ function NavTabs() {
                 options={{
                     title: "Fil d'actualité",
                     headerShown: false,
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={focused ? "newspaper-variant" : "newspaper-variant-outline"}
+                            color={color}
+                        />
+                    ),
                 }}
             />
             <Tab.Screen
@@ -47,6 +55,13 @@ function NavTabs() {
                 component={AboutScreen}
                 options={{
                     title: "À propos",
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={focused ? "information" : "information-outline"}
+                            color={color}
+                        />
+                    ),
                 }}
             />
         </Tab.Navigator>
