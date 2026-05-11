@@ -34,6 +34,7 @@ const COURSES: Course[] = [
   { id: '6',  title: 'Détail',       emoji: '📄', color: '#9B59B6', screen: 'Detail' },
   { id: '7',  title: 'State vs Props', emoji: '⚡', color: '#1ABC9C', screen: 'StateVsProps' },
   { id: '10', title: 'Formulaire',   emoji: '✍️', color: '#8E44AD', screen: 'Form' },
+  { id: '11', title: 'Articles',     emoji: '📰', color: '#E67E22', screen: 'Articles' },
 ];
 
 type Stat = {
@@ -94,6 +95,7 @@ const HomeScreen = ({ navigation }: Props) => {
       contentContainerStyle={styles.scrollContent}
       showsVerticalScrollIndicator={false}
     >
+      {/* Header */}
       <View style={styles.header}>
         <View>
           <Text style={styles.hello}>Bonjour 👋</Text>
@@ -105,6 +107,7 @@ const HomeScreen = ({ navigation }: Props) => {
         />
       </View>
 
+      {/* Hero */}
       <TouchableOpacity
         activeOpacity={0.9}
         style={styles.hero}
@@ -121,6 +124,7 @@ const HomeScreen = ({ navigation }: Props) => {
         </View>
       </TouchableOpacity>
 
+      {/* Stats */}
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -131,6 +135,7 @@ const HomeScreen = ({ navigation }: Props) => {
         ))}
       </ScrollView>
 
+      {/* Grille de cours */}
       <Text style={styles.sectionTitle}>📚 Mes cours</Text>
       <View style={styles.grid}>
         {COURSES.map((course) => (
