@@ -1,9 +1,5 @@
-import { View, Text, StyleSheet, FlatList, Image, Dimensions, Alert, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, useWindowDimensions, Alert, TouchableOpacity } from "react-native";
 import { COLORS } from "../constants/colors";
-
-// Calcul de la largeur des cartes pour une grille à 2 colonnes
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const CARD_WIDTH = (SCREEN_WIDTH - 16 * 3) / 2;
 
 const PRODUCTS = [
   {
@@ -56,11 +52,11 @@ const PRODUCTS = [
   },
 ];
 
-function ProductCard({ product }: { product: (typeof PRODUCTS)[0] }) {
+function ProductCard({ product, cardWidth }: { product: (typeof PRODUCTS)[0]; cardWidth: number }) {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { width: cardWidth }]}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: product.image }} style={styles.image} />
+        <Image source={{ uri: product.image }} style={[styles.image, { height: cardWidth - 24 }]} />
         <View style={styles.badge}>
           <Text style={[styles.badgeText, { color: product.badgeColor }]}>{product.badge}</Text>
         </View>
@@ -82,12 +78,15 @@ function ProductCard({ product }: { product: (typeof PRODUCTS)[0] }) {
 }
 
 export default function CatalogueScreen() {
+  const { width } = useWindowDimensions();
+  const cardWidth = (width - 16 * 3) / 2;
+
   return (
     <View style={styles.screen}>
       <FlatList
         data={PRODUCTS}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ProductCard product={item} />}
+        renderItem={({ item }) => <ProductCard product={item} cardWidth={cardWidth} />}
         numColumns={2} // Affichage en grille de 2 colonnes
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.listContainer}
@@ -111,7 +110,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   card: {
-    width: CARD_WIDTH,
     backgroundColor: COLORS.white,
     borderRadius: 24,
     padding: 12,
@@ -131,7 +129,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: CARD_WIDTH - 24,
     resizeMode: "cover",
   },
   badge: {
