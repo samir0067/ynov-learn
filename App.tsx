@@ -13,8 +13,10 @@ import ImagesScreen from "./src/screens/ImagesScreen";
 import ChronoScreen from "./src/screens/ChronoScreen";
 import FormScreen from "./src/screens/FormScreen";
 import CategoryDetailScreen from "./src/screens/CategoryDetailScreen";
-import HomeHeader from "./src/components/HomeHeader";
+import HomeHeaderTitle from "./src/components/HomeHeaderTitle";
 import ImagePickerDemoScreen from "./src/screens/ImagePickerDemoScreen";
+import { COLORS } from "./src/constants/colors";
+import { Image } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,48 +29,60 @@ function HomeStacks() {
                 component={HomeScreen}
                 options={{
                     title: "Bonjour :D",
-                    headerTitle: props => <HomeHeader />,
+                    headerTitle: () => <HomeHeaderTitle />,
+                    headerRight: () => (
+                        <Image
+                            source={require("./assets/images/squirrelpfp.jpg")}
+                            style={{
+                                width: 56,
+                                height: 56,
+                                borderRadius: 15,
+                                borderWidth: 2,
+                                borderColor: COLORS.primary,
+                            }}
+                        />
+                    ),
                 }}
             />
             <Stack.Screen
                 name="Images"
                 component={ImagesScreen}
-                options={{ title: "Démo Images" }}
+                options={{ title: "Images" }}
             />
             <Stack.Screen
                 name="Profile"
                 component={ProfileScreen}
-                options={{ title: "Démo Profil" }}
+                options={{ title: "Profils" }}
             />
             <Stack.Screen
                 name="FlatListDemo"
                 component={FlatListDemoScreen}
-                options={{ title: "Démo Flatlist" }}
+                options={{ title: "Flatlist" }}
             />
             <Stack.Screen
                 name="GridDemo"
                 component={GridDemoScreen}
-                options={{ title: "Démo Grid" }}
+                options={{ title: "Grid" }}
             />
             <Stack.Screen
                 name="Catalog"
                 component={CatalogScreen}
-                options={{ title: "Démo Catalogue" }}
+                options={{ title: "Catalogue" }}
             />
             <Stack.Screen
                 name="Compteur"
                 component={CompteurScreen}
-                options={{ title: "Démo Compteur" }}
+                options={{ title: "Compteur" }}
             />
             <Stack.Screen
                 name="Chrono"
                 component={ChronoScreen}
-                options={{ title: "Démo Chrono" }}
+                options={{ title: "Chronomètre" }}
             />
             <Stack.Screen
                 name="Form"
                 component={FormScreen}
-                options={{ title: "Formulaire ✍️" }}
+                options={{ title: "Formulaire" }}
             />
             <Stack.Screen
                 name="ImagePickerDemo"
@@ -99,11 +113,7 @@ function NavTabs() {
                     tabBarIcon: ({ color, focused }) => (
                         <MaterialCommunityIcons
                             size={28}
-                            name={
-                                focused
-                                    ? "home"
-                                    : "home-outline"
-                            }
+                            name={focused ? "home" : "home-outline"}
                             color={color}
                         />
                     ),
@@ -117,11 +127,7 @@ function NavTabs() {
                     tabBarIcon: ({ color, focused }) => (
                         <MaterialCommunityIcons
                             size={28}
-                            name={
-                                focused
-                                    ? "view-grid"
-                                    : "view-grid-outline"
-                            }
+                            name={focused ? "view-grid" : "view-grid-outline"}
                             color={color}
                         />
                     ),
@@ -141,6 +147,13 @@ function NavTabs() {
                             color={color}
                         />
                     ),
+                    headerStyle: {
+                        backgroundColor: COLORS.primary,
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleStyle: {
+                        fontWeight: "bold",
+                    },
                 }}
             />
         </Tab.Navigator>

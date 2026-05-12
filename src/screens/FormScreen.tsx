@@ -36,7 +36,7 @@ export default function FormScreen() {
                         setSeconds(0);
                     }}
                     maxLength={20}
-                    placeholder="Entrez votre prénom ici..."
+                    placeholder="Je suis..."
                 />
                 <Text
                     style={
@@ -51,17 +51,15 @@ export default function FormScreen() {
                 </Text>
                 <View style={style.center}>
                     <Text style={style.greeting}>
-                        "
-                        {name.toLowerCase() === "ta mère"
+                        {name.toLowerCase() == "ta mère"
                             ? "Salut maman ! 👋"
-                            : name.toLowerCase() === "ton père"
+                            : name.toLowerCase() == "ton père"
                               ? "nooooooon 😱"
                               : name
                                 ? `Bonjour ${name} ! 👋`
-                                : seconds >= 5
+                                : seconds >= 8
                                   ? `T'es encore là ? 😴`
                                   : "Bonjour, qui es-tu ? 🤔"}
-                        "
                     </Text>
                     <Button
                         label="Effacer"

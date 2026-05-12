@@ -66,14 +66,8 @@ export default function GridDemoScreen({ navigation }: { navigation: any }) {
                 )}
                 numColumns={2}
                 columnWrapperStyle={styles.row}
-                ListHeaderComponent={
-                    <View>
-                        <Text style={styles.header}>
-                            🔲 Grille de catégories
-                        </Text>
-                    </View>
-                }
-                ListFooterComponent={<View style={{ height: 20 }} />}
+                ListHeaderComponent={<View style={{ height: 16 }} />}
+                ListFooterComponent={<View style={{ height: 16 }} />}
             />
         </View>
     );

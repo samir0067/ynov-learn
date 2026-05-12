@@ -19,8 +19,7 @@ export default function ChronoScreen() {
 
     return (
         <View style={style.container}>
-            <Text style={style.title}>Chronomètre</Text>
-            <Text style={style.status}>{running ? "En cours" : "Arrêté"}</Text>
+            <Text style={style.status}>{running ? "En cours..." : "Arrêté"}</Text>
             <View style={style.chronoContainer}>
                 <View style={style.round}>
                     <Text style={style.seconds}>{seconds}</Text>

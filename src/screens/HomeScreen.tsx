@@ -10,13 +10,13 @@ type HomeScreenProps = {
 
 const DEMO_ITEMS = [
     { id: "1", label: "Images", screen: "Images", color: "skyblue" },
-    { id: "2", label: "Profil", screen: "Profile", color: "magenta" },
-    { id: "3", label: "Flatlist", screen: "FlatListDemo", color: "tomato" },
+    { id: "2", label: "Profil", screen: "Profile", color: "#e97bb4" },
+    { id: "3", label: "Flatlist", screen: "FlatListDemo", color: "#f68280" },
     { id: "4", label: "Grid", screen: "GridDemo", color: "orange" },
-    { id: "5", label: "Catalogue", screen: "Catalog", color: "lime" },
+    { id: "5", label: "Catalogue", screen: "Catalog", color: "#5eed67" },
     { id: "6", label: "Compteur", screen: "Compteur", color: "yellow" },
-    { id: "7", label: "Chrono", screen: "Chrono", color: "teal" },
-    { id: "8", label: "Formulaire", screen: "Form", color: "#8E44AD" },
+    { id: "7", label: "Chrono", screen: "Chrono", color: "cyan" },
+    { id: "8", label: "Formulaire", screen: "Form", color: "#d087f0" },
     { id: "9", label: "Image Picker", screen: "ImagePickerDemo", color: "#2ECC71" },
 ];
 
