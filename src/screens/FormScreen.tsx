@@ -26,7 +26,7 @@ export default function FormScreen() {
   const isFieldEmpty = name.length === 0;
   const charLimit = 20;
 
-  // Calcul du style dynamique pour le compteur de caractères (Étape 3)
+  
   const getCounterStyle = () => {
     if (name.length === charLimit) return [styles.charCount, styles.charMaxed];
     if (name.length >= 15) return [styles.charCount, styles.charWarning];
@@ -35,7 +35,6 @@ export default function FormScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* KeyboardAvoidingView permet au clavier de ne pas cacher le contenu */}
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
         style={styles.content}
@@ -45,7 +44,7 @@ export default function FormScreen() {
         <View style={styles.header}>
           <Text style={styles.title}>Comment tu t'appelles ?</Text>
           <Text style={styles.greeting}>
-            {isFieldEmpty ? "Bonjour, qui es-tu ? 🤔" : `Bonjour ${name} 👋`}
+            {isFieldEmpty ? "Bonjour, qui es-tu ? " : `Bonjour ${name} `}
           </Text>
         </View>
 
@@ -55,8 +54,8 @@ export default function FormScreen() {
             placeholder="Ton prénom ici..."
             placeholderTextColor="#C7C7CC"
             value={name}
-            onChangeText={setName} // Mise à jour du state en direct
-            maxLength={charLimit}   // Limite à 20 caractères
+            onChangeText={setName} 
+            maxLength={charLimit}   
             autoCorrect={false}
           />
           
@@ -74,7 +73,7 @@ export default function FormScreen() {
           activeOpacity={0.7}
         >
           <Text style={[styles.resetText, isFieldEmpty && styles.textDisabled]}>
-            Effacer 🗑️
+            Effacer 
           </Text>
         </TouchableOpacity>
 
