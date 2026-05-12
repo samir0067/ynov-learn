@@ -14,6 +14,7 @@ import ChronoScreen from './src/screens/ChronoScreen';
 import FormScreen from './src/screens/FormScreen';
 import DetailCategoryScreen from './src/screens/DetailCategoryScreen';
 import ArticlesScreen from './src/screens/ArticlesScreen';
+import SouvenirsScreen from './src/screens/SouvenirsScreen';
 import ArticleDetailScreen from './src/screens/ArticleDetailScreen';
 import { COLORS } from './src/constants/colors';
 import { Text } from 'react-native';
@@ -36,6 +37,16 @@ function MainTabs() {
         name="ArticlesTab" 
         component={ArticlesScreen} 
         options={{ title: "Articles", tabBarIcon: () => <Text>📰</Text> }} 
+      />
+      <Tab.Screen 
+        name="ProfileTab" 
+        component={FormScreen} 
+        options={{ title: "Profil", tabBarIcon: () => <Text>👤</Text> }} 
+      />
+      <Tab.Screen 
+        name="SouvenirsTab" 
+        component={SouvenirsScreen} 
+        options={{ title: "Souvenirs", tabBarIcon: () => <Text>🗺️</Text> }} 
       />
     </Tab.Navigator>
   );

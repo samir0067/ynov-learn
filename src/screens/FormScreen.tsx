@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { COLORS } from '../constants/colors';
+import * as ImagePicker from 'expo-image-picker';
+import Button from '../components/Button'; // Import du composant Button
 
 const DANGER_COLOR = '#E74C3C';
 
@@ -13,9 +15,34 @@ export default function FormScreen() {
   // Bonus: Gérer le message d'inactivité
   const [isInactive, setIsInactive] = useState(false);
 
+  // --- IMAGE PICKER ---
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+
+  async function pickImage() {
+    setPhotoError(null);
+
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      setPhotoError("Permission refusée. Active la galerie dans les réglages.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  }
+
   // --- LOGIC ---
   // Étape 2: Le bouton reset est-il désactivé ?
-  const isResetDisabled = name.length === 0;
+  const isResetDisabled = name.length === 0 && !photoUri;
 
   // Étape 3: Calculer la couleur du compteur
   const charCount = name.length;
@@ -41,6 +68,8 @@ export default function FormScreen() {
   const handleReset = () => {
     if (!isResetDisabled) {
       setName('');
+      setPhotoUri(null);
+      setPhotoError(null);
       setResetCount(prevCount => prevCount + 1);
     }
   };
@@ -51,6 +80,18 @@ export default function FormScreen() {
       <View style={styles.card}>
         {/* Étape 1: Titre */}
         <Text style={styles.title}>Comment tu t'appelles ?</Text>
+
+        {/* Section Photo */}
+        <View style={styles.photoCircle}>
+          {photoUri ? (
+            <Image source={{ uri: photoUri }} style={styles.photo} resizeMode="cover" />
+          ) : (
+            <Text style={styles.photoPlaceholder}>📸</Text>
+          )}
+        </View>
+        
+        <Button label="📸 Choisir une photo" onPress={pickImage} />
+        {photoError && <Text style={styles.errorText}>{photoError}</Text>}
 
         {/* Étape 1: Champ de saisie */}
         <TextInput
@@ -181,5 +222,32 @@ const styles = StyleSheet.create({
       color: COLORS.gray,
       fontSize: 12,
       marginTop: 16,
-  }
+  },
+  photoCircle: { // Renommé de photoContainer
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#F8F9FA',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20, // Ajusté pour laisser de la place au bouton
+    borderWidth: 1,
+    borderColor: '#EAECEF',
+    overflow: 'hidden',
+  },
+  photo: {
+    width: '100%',
+    height: '100%',
+  },
+  photoPlaceholder: { // Fusionné avec photoPlaceholderText
+    fontSize: 40,
+    textAlign: 'center',
+  },
+  errorText: { // Renommé de photoErrorText
+    color: DANGER_COLOR,
+    fontSize: 11,
+    textAlign: 'center',
+    marginBottom: 5,
+  },
 });
