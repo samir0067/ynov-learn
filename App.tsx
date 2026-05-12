@@ -22,7 +22,9 @@ function FeedStack() {
             <Stack.Screen
                 name="Article"
                 component={ArticleScreen}
-                options={{ title: "Article" }}
+                options={{
+                    title: "Article",
+                }}
             />
         </Stack.Navigator>
     );
@@ -44,7 +46,11 @@ function NavTabs() {
                     tabBarIcon: ({ color, focused }) => (
                         <MaterialCommunityIcons
                             size={28}
-                            name={focused ? "newspaper-variant" : "newspaper-variant-outline"}
+                            name={
+                                focused
+                                    ? "newspaper-variant"
+                                    : "newspaper-variant-outline"
+                            }
                             color={color}
                         />
                     ),
@@ -58,7 +64,9 @@ function NavTabs() {
                     tabBarIcon: ({ color, focused }) => (
                         <MaterialCommunityIcons
                             size={28}
-                            name={focused ? "information" : "information-outline"}
+                            name={
+                                focused ? "information" : "information-outline"
+                            }
                             color={color}
                         />
                     ),

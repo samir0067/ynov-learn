@@ -1,6 +1,5 @@
-import { View, StyleSheet, Image, Text, Linking } from "react-native";
+import { View, StyleSheet, Text, Linking } from "react-native";
 import { useEffect } from "react";
-import Button from "../components/Button";
 
 export default function ArticleScreen({
     route,
@@ -20,15 +19,15 @@ export default function ArticleScreen({
             <View style={styles.contentBox}>
                 <Text style={styles.title}>{params.title}</Text>
                 <Text style={styles.source}>De {params.source}</Text>
-                <Text style={styles.url} onPress={() => Linking.openURL(params.url)}>
+                <Text style={styles.keywords}>
+                    Mots-clés: {params.keywords.join(", ")}
+                </Text>
+                <Text
+                    style={styles.url}
+                    onPress={() => Linking.openURL(params.url)}
+                >
                     Ouvrir l'article dans le navigateur
                 </Text>
-                <Text style={styles.keywords}>Mots-clés: {params.keywords.join(", ")}</Text>
-                <Text style={styles.body}>{params.body}</Text>
-                <Button
-                    label="Retour"
-                    onPress={() => navigation.goBack()}
-                />
             </View>
         </View>
     );
@@ -37,14 +36,13 @@ export default function ArticleScreen({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
     },
     contentBox: {
         backgroundColor: "white",
+        margin: 20,
         padding: 20,
         borderRadius: 10,
-        alignItems: "center",
         gap: 16,
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     },
