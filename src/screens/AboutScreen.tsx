@@ -9,7 +9,7 @@ export default function AboutScreen() {
           <Text style={styles.emoji}>📱</Text>
         </View>
 
-        <Text style={styles.name}>Samir</Text>
+        <Text style={styles.name}>Kenan</Text>
         <Text style={styles.group}>B2 Informatique — YNOV Strasbourg</Text>
 
         <View style={styles.divider} />
