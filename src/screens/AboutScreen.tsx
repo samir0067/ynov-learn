@@ -1,15 +1,77 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import Button from '../components/Button';
+
 
 export default function AboutScreen() {
+  
+
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+
+    async function pickImage() {
+    setPhotoError(null);
+
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      setPhotoError("Permission refusée. Active la galerie dans les réglages.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: "images",
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  }
+
+  async function takePhoto() {
+    setPhotoError(null);
+
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    if (!permission.granted) {
+      setPhotoError("Permission refusée pour la caméra.");
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  }
+
   return (
     <View style={styles.container}>
+              <View>
+          {photoUri ? (
+            <Image source={{ uri: photoUri }} style={styles.photo} resizeMode="cover" />
+          ) : (
+            <Text>📷</Text>
+          )}
+        </View>
+
+        <Button label="📸 Choisir une photo" onPress={pickImage} />
+        {photoError && <Text>{photoError}</Text>}
       <Text style={styles.emoji}>📰</Text>
       <Text style={styles.title}>app articles</Text>
       <Text style={styles.subtitle}>
         Données venant de ce site:{'\n'}
         <Text style={styles.link}>jsonplaceholder.typicode.com</Text>
       </Text>
+      <View style={styles.photoButtonWrapper}>
+            <Button label="📷 Caméra" onPress={takePhoto} />
+          </View>
       <View style={styles.card}>
         <Row label="Stack" value="React Native + Expo" />
         <Row label="Navigation" value="Bottom Tabs + Stack" />
@@ -47,4 +109,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', justifyContent: 'space-between' },
   rowLabel: { fontSize: 13, color: '#888' },
   rowValue: { fontSize: 13, fontWeight: '700', color: '#1a1a2e' },
+  photo: { width: 120, height: 120, borderRadius: 12, marginBottom: 16 },
+  photoButtonWrapper: { marginTop: 16 },
 });
+
