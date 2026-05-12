@@ -32,6 +32,83 @@ export default function AboutScreen() {
   );
 }
 
+
+
+
+
+
+// POUR AFFICHER DES IMAGES DEPUIS L'APPAREILs
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+
+    async function pickImage() {
+    setPhotoError(null);
+
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      setPhotoError("Permission refusée. Active la galerie dans les réglages.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: "images",
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  }
+
+  async function takePhoto() {
+    setPhotoError(null);
+
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    if (!permission.granted) {
+      setPhotoError("Permission refusée pour la caméra.");
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  }
+
+//POUR LE STYLE DE PHOTO CIRCLE (afficher les images appareil)
+
+        <View style={styles.photoCircle}>
+          {photoUri ? (
+            <Image source={{ uri: photoUri }} style={styles.photo} resizeMode="cover" />
+          ) : (
+            <Text style={styles.photoPlaceholder}>📷</Text>
+          )}
+        </View>
+
+        <View style={styles.photoButtonsRow}>
+          <View style={styles.photoButtonWrapper}>
+            <Button label="📸 Galerie" onPress={pickImage} />
+          </View>
+          <View style={styles.photoButtonWrapper}>
+            <Button label="📷 Caméra" onPress={takePhoto} />
+          </View>
+        </View>
+        {photoError && <Text style={styles.errorText}>{photoError}</Text>}
+
+ 
+
+
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
