@@ -6,4 +6,5 @@ export const COLORS = {
     black: "#000000",
     gray: "#999999",
     softgray: "#E0E0E0",
+    error: "#ff3b30",
 }

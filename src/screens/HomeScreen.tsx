@@ -3,7 +3,6 @@ import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 
 const banner = require("../../assets/images/strasbourg.jpg");
-const avatar = require("../../assets/images/squirrelpfp.jpg");
 
 type HomeScreenProps = {
     navigation: any;
@@ -18,6 +17,7 @@ const DEMO_ITEMS = [
     { id: "6", label: "Compteur", screen: "Compteur", color: "yellow" },
     { id: "7", label: "Chrono", screen: "Chrono", color: "teal" },
     { id: "8", label: "Formulaire", screen: "Form", color: "#8E44AD" },
+    { id: "9", label: "Image Picker", screen: "ImagePickerDemo", color: "#2ECC71" },
 ];
 
 function NavigationItem({
@@ -35,16 +35,6 @@ function NavigationItem({
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <ScrollView style={styles.container}>
-            {/* Header : salutation à gauche, avatar à droite - issu de la branche Samir */}
-            <View style={styles.header}>
-                <View>
-                    <Text style={styles.title}>Bonjour :D</Text>
-                    <Text style={styles.subtitle}>
-                        Bienvenue sur Ynov Learn !
-                    </Text>
-                </View>
-                <Image source={avatar} style={styles.avatar} />
-            </View>
             <Image source={banner} style={styles.cover} />
 
             <View style={{ paddingHorizontal: 20, marginBottom: 12 }}>
@@ -54,18 +44,11 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
                         <NavigationItem
                             key={item.id}
                             label={item.label}
-                            style={styles.demoItem}
                             color={item.color}
                             onPress={() => navigation.navigate(item.screen)}
                         />
                     ))}
                 </View>
-            </View>
-            <View style={styles.center}>
-                <Button
-                    label="En savoir plus"
-                    onPress={() => navigation.navigate("Detail")}
-                />
             </View>
         </ScrollView>
     );
@@ -77,30 +60,10 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background,
     },
     // ---- Header ----
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 20,
-        width: "100%",
-        backgroundColor: COLORS.white,
-    },
     title: {
         fontSize: 28,
         fontWeight: "bold",
         color: COLORS.black,
-    },
-    subtitle: {
-        fontSize: 14,
-        color: COLORS.gray,
-        marginTop: 2,
-    },
-    avatar: {
-        width: 56,
-        height: 56,
-        borderRadius: 15,
-        borderWidth: 2,
-        borderColor: COLORS.primary,
     },
     intro: {
         fontSize: 16,

@@ -1,8 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import HomeScreen from "./src/screens/HomeScreen";
-import DetailScreen from "./src/screens/DetailScreen";
+import AboutScreen from "./src/screens/AboutScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import FlatListDemoScreen from "./src/screens/FlatListDemoScreen";
 import GridDemoScreen from "./src/screens/GridDemoScreen";
@@ -12,6 +13,8 @@ import ImagesScreen from "./src/screens/ImagesScreen";
 import ChronoScreen from "./src/screens/ChronoScreen";
 import FormScreen from "./src/screens/FormScreen";
 import CategoryDetailScreen from "./src/screens/CategoryDetailScreen";
+import HomeHeader from "./src/components/HomeHeader";
+import ImagePickerDemoScreen from "./src/screens/ImagePickerDemoScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,14 +26,9 @@ function HomeStacks() {
                 name="Dashboard"
                 component={HomeScreen}
                 options={{
-                    title: "Accueil",
-                    headerShown: false,
+                    title: "Bonjour :D",
+                    headerTitle: props => <HomeHeader />,
                 }}
-            />
-            <Stack.Screen
-                name="Detail"
-                component={DetailScreen}
-                options={{ title: "Détail" }}
             />
             <Stack.Screen
                 name="Images"
@@ -73,6 +71,11 @@ function HomeStacks() {
                 options={{ title: "Formulaire ✍️" }}
             />
             <Stack.Screen
+                name="ImagePickerDemo"
+                component={ImagePickerDemoScreen}
+                options={{ title: "Image Picker" }}
+            />
+            <Stack.Screen
                 name="CategoryDetail"
                 component={CategoryDetailScreen}
             />
@@ -93,6 +96,17 @@ function NavTabs() {
                 options={{
                     title: "Accueil",
                     headerShown: false,
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={
+                                focused
+                                    ? "home"
+                                    : "home-outline"
+                            }
+                            color={color}
+                        />
+                    ),
                 }}
             />
             <Tab.Screen
@@ -100,13 +114,33 @@ function NavTabs() {
                 component={GridDemoScreen}
                 options={{
                     title: "Grille",
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={
+                                focused
+                                    ? "view-grid"
+                                    : "view-grid-outline"
+                            }
+                            color={color}
+                        />
+                    ),
                 }}
             />
             <Tab.Screen
-                name="Details"
-                component={DetailScreen}
+                name="About"
+                component={AboutScreen}
                 options={{
-                    title: "Détails",
+                    title: "À propos",
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={
+                                focused ? "information" : "information-outline"
+                            }
+                            color={color}
+                        />
+                    ),
                 }}
             />
         </Tab.Navigator>
