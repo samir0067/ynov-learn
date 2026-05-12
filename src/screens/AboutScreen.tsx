@@ -242,8 +242,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   photoCircle: {
-    width: 120,
-    height: 120,
+    width: "100%",
+    height: 180,
     borderRadius: 60,
     backgroundColor: COLORS.background,
     justifyContent: "center",
