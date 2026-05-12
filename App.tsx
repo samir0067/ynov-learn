@@ -17,6 +17,7 @@ import HomeHeaderTitle from "./src/components/HomeHeaderTitle";
 import ImagePickerDemoScreen from "./src/screens/ImagePickerDemoScreen";
 import { COLORS } from "./src/constants/colors";
 import { Image } from "react-native";
+import SouvenirsScreen from "./src/screens/SouvenirsScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -154,6 +155,20 @@ function NavTabs() {
                     headerTitleStyle: {
                         fontWeight: "bold",
                     },
+                }}
+            />
+            <Tab.Screen
+                name="Souvenirs"
+                component={SouvenirsScreen}
+                options={{
+                    title: "Souvenirs",
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons
+                            size={28}
+                            name={focused ? "camera" : "camera-outline"}
+                            color={color}
+                        />
+                    ),
                 }}
             />
         </Tab.Navigator>
