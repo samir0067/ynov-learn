@@ -1,42 +1,29 @@
 import { StyleSheet, Text, View } from "react-native";
-import Button from "../components/Button";
-import { COLORS } from "../constants/colors";
 
-type Props = {
-  navigation: any 
-}
+export default function DetailScreen({ route }: any) {
+  const { name, emoji, color } = route.params ?? {};
 
-export default function DetailScreen({navigation}: Props) {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Détail 📄</Text>
-            <Text style={styles.subtitle}>Vous êtes sur l'écran de détail</Text>
-            <Button 
-              label="← Retour" 
-              onPress={() => navigation.goBack()} 
-              color={COLORS.secondary} 
-            />
-        </View>  
-    )
+  return (
+    <View style={[styles.container, { backgroundColor: color }]}>
+      <Text style={styles.emoji}>{emoji}</Text>
+      <Text style={styles.title}>{name}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.background,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emoji: {
+    fontSize: 80,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: COLORS.black,
-    marginBottom: 8,
+    fontSize: 36,
+    fontWeight: "bold",
+    color: "#FFF",
   },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: COLORS.gray,
-    marginBottom: 32,
-  }
 });
